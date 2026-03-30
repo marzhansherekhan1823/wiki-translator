@@ -1,0 +1,16 @@
+# Python virtual environments
+.venv/
+.venv312/
+venv/
+ENV/
+__pycache__/
+*.py[cod]
+
+# Node dependencies
+node_modules/
+dist/
+
+# Large binaries
+*.dll
+*.exe
+*.bin

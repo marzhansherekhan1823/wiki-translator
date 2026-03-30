@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #e0f2ff, #f4faff);
+  color: #222;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 30px 15px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  text-align: center;
+  color: #1976d2;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.search-box {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 14px;
+  border: 1px solid #cfd8dc;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+.search-box button,
+.translate-btn {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 12px;
+  background: #1976d2;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.search-box button:hover,
+.translate-btn:hover {
+  background: #125aa0;
+}
+
+.search-box button:disabled,
+.translate-btn:disabled {
+  background: #90caf9;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #d32f2f;
+  text-align: center;
+  font-weight: bold;
+}
+
+.card {
+  margin-top: 20px;
+  padding: 25px;
+  border-radius: 18px;
+  background: #fdfdfd;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+}
+
+.card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1565c0;
+}
+
+.result-image {
+  width: 100%;
+  max-width: 350px;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.no-image {
+  text-align: center;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.text-block {
+  margin-top: 20px;
+  padding: 18px;
+  background: #f5f9ff;
+  border-radius: 14px;
+  line-height: 1.7;
+}
+
+.text-block h3 {
+  margin-top: 0;
+  color: #0d47a1;
+}
+
+.translated {
+  background: #eefbf3;
+  margin-top: 20px;
+}
+
+.translate-btn {
+  display: block;
+  margin: 20px auto 0;
+}
+
+@media (max-width: 700px) {
+  .search-box {
+    flex-direction: column;
+  }
+
+  .search-box button,
+  .translate-btn {
+    width: 100%;
+  }
+
+  .container {
+    padding: 20px;
+  }
+}
