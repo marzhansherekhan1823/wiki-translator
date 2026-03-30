@@ -18,6 +18,7 @@ const PORT = process.env.PORT || 3001;
 const USER_AGENT = "WikiTranslatorUniProject/1.0 (contact: student)";
 const WIKI_TIMEOUT_MS = 15000;
 const TRANSLATE_TIMEOUT_MS = 20000;
+const PYTHON_AI_URL = process.env.PYTHON_AI_URL || "http://wiki-python-ai:8000/translate";
 
 const CHUNK_SIZE = 450;
 const MAX_CHUNKS = 5;
@@ -82,15 +83,20 @@ function splitIntoChunks(text, chunkSize = CHUNK_SIZE, maxChunks = MAX_CHUNKS) {
 }
 
 async function translateChunk(chunk, sourceLang = "en", targetLang = "kk") {
-  const response = await axios.get("https://api.mymemory.translated.net/get", {
-    params: {
-      q: chunk,
-      langpair: `${sourceLang}|${targetLang}`,
-    },
-    timeout: TRANSLATE_TIMEOUT_MS,
-  });
+  try {
+    
+    const response = await axios.post(PYTHON_AI_URL, {
+      text: chunk 
+    }, {
+      timeout: TRANSLATE_TIMEOUT_MS,
+    });
 
-  return response.data?.responseData?.translatedText || "";
+    
+    return response.data?.translated || "";
+  } catch (error) {
+    console.error("Local AI Translation error:", error.message);
+    return "Ошибка перевода через AI";
+  }
 }
 
 async function translateTextInChunks(text, sourceLang = "en", targetLang = "kk") {
