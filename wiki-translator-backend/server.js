@@ -18,6 +18,8 @@ app.use(
 
 app.use(express.json({ limit: "1mb" }));
 
+const apiRouter = express.Router();
+
 const PORT = process.env.PORT || 3001;
 const USER_AGENT = "WikiTranslatorUniProject/1.0 (contact: student)";
 const WIKI_TIMEOUT_MS = 15000;
@@ -118,11 +120,11 @@ async function translateTextInChunks(text, sourceLang = "en", targetLang = "kk")
   return translatedChunks.join(" ");
 }
 
-app.get("/", (req, res) => {
+apiRouter.get("/", (req, res) => {
   res.json({ message: "Wiki Translator Backend is running" });
 });
 
-app.get("/search", async (req, res) => {
+apiRouter.get("/search", async (req, res) => {
   try {
     const { query, lang = "en" } = req.query;
 
@@ -146,7 +148,7 @@ app.get("/search", async (req, res) => {
   }
 });
 
-app.post("/translate", async (req, res) => {
+apiRouter.post("/translate", async (req, res) => {
   try {
     const { text, sourceLang = "en", targetLang = "kk" } = req.body;
 
@@ -179,7 +181,7 @@ app.post("/translate", async (req, res) => {
   }
 });
 
-app.get("/search-and-translate", async (req, res) => {
+apiRouter.get("/search-and-translate", async (req, res) => {
   try {
     const {
       query,
@@ -229,6 +231,8 @@ app.get("/search-and-translate", async (req, res) => {
     });
   }
 });
+
+app.use("/api", apiRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
