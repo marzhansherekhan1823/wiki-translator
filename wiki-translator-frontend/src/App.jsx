@@ -21,8 +21,9 @@ function App() {
       setResult(null);
       setTranslatedText("");
 
+      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
       const response = await fetch(
-        `http://localhost:3001/search?query=${encodeURIComponent(query)}&lang=en`
+        `${API_URL}/search?query=${encodeURIComponent(query)}&lang=en`
       );
 
       const rawText = await response.text();
@@ -60,7 +61,8 @@ function App() {
       setLoadingTranslate(true);
       setError("");
 
-      const response = await fetch("http://localhost:3001/translate", {
+      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+      const response = await fetch(`${API_URL}/translate`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
