@@ -8,7 +8,11 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://wikitranslator.sdutechnopark.kz"],
+    origin: [
+      "http://localhost:5173", 
+      "https://wikitranslator.sdutechnopark.kz",
+      "http://wikitranslator.sdutechnopark.kz" // Добавь вот эту строчку без S!
+    ],
   })
 );
 
