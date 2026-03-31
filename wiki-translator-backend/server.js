@@ -11,7 +11,7 @@ app.use(
     origin: [
       "http://localhost:5173", 
       "https://wikitranslator.sdutechnopark.kz",
-      "http://wikitranslator.sdutechnopark.kz" // Добавь вот эту строчку без S!
+      "http://wikitranslator.sdutechnopark.kz" 
     ],
   })
 );
