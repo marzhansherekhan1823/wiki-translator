@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 3001;
 const USER_AGENT = "WikiTranslatorUniProject/1.0 (contact: student)";
 const WIKI_TIMEOUT_MS = 15000;
 const TRANSLATE_TIMEOUT_MS = 20000;
-const PYTHON_AI_URL = process.env.PYTHON_AI_URL || "http://wiki-python-ai:8000/translate";
+const PYTHON_AI_URL = process.env.PYTHON_AI_URL || "wikipedia-kaz-translator-pythonai-ziecvx:8000/translate";
 
 const CHUNK_SIZE = 450;
 const MAX_CHUNKS = 5;
